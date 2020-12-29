@@ -1,8 +1,0 @@
-/opt/java/dropwizard/dropwizard-example/src/test/java/com/example/helloworld/IntegrationTest.java
-/opt/java/dropwizard/dropwizard-example/src/test/java/com/example/helloworld/resources/ProtectedResourceTest.java
-/opt/java/dropwizard/dropwizard-example/src/test/java/com/example/helloworld/DockerIntegrationTest.java
-/opt/java/dropwizard/dropwizard-example/src/test/java/com/example/helloworld/resources/PeopleResourceTest.java
-/opt/java/dropwizard/dropwizard-example/src/test/java/com/example/helloworld/resources/ProtectedClassResourceTest.java
-/opt/java/dropwizard/dropwizard-example/src/test/java/com/example/helloworld/db/PersonDAOIntegrationTest.java
-/opt/java/dropwizard/dropwizard-example/src/test/java/com/example/helloworld/resources/PersonResourceTest.java
-/opt/java/dropwizard/dropwizard-example/src/test/java/com/example/helloworld/db/PersonDAOTest.java

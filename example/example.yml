@@ -6,16 +6,17 @@ defaultName: ${DW_DEFAULT_NAME:-Stranger}
 database:
 
   # the name of your JDBC driver
-  driverClass: org.h2.Driver
+  driverClass: com.mysql.cj.jdbc.Driver
 
   # the username
-  user: sa
+  user: dropwisard
 
   # the password
-  password: sa
+  password: d1wizard_PWD
 
   # the JDBC URL
-  url: jdbc:h2:./target/example
+  url: jdbc:mysql://localhost:3306/dropwizard
+  validationQuery: "/* MyService Health Check */ SELECT 1"
 
 # use the simple server factory if you only want to run on a single port
 #server:
