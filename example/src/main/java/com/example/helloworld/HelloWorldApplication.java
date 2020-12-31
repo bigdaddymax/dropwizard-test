@@ -98,6 +98,6 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
         environment.jersey().register(new PeopleResource(dao));
         environment.jersey().register(new PersonResource(dao));
         environment.jersey().register(new FilteredResource());
-        environment.jersey().register(new PhotosResource(dao));
+        environment.jersey().register(new PhotosResource(store));
     }
 }
