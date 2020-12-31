@@ -77,6 +77,7 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
             }
         });
         bootstrap.addBundle(hibernateBundle);
+        bootstrap.addBundle(hibernatePhotoBundle);
         bootstrap.addBundle(new ViewBundle<HelloWorldConfiguration>() {
             @Override
             public Map<String, Map<String, String>> getViewConfiguration(HelloWorldConfiguration configuration) {
