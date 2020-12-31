@@ -42,15 +42,7 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     }
 
     private final HibernateBundle<HelloWorldConfiguration> hibernateBundle = new HibernateBundle<HelloWorldConfiguration>(
-            Person.class) {
-        @Override
-        public DataSourceFactory getDataSourceFactory(HelloWorldConfiguration configuration) {
-            return configuration.getDataSourceFactory();
-        }
-    };
-
-    private final HibernateBundle<HelloWorldConfiguration> hibernatePhotoBundle = new HibernateBundle<HelloWorldConfiguration>(
-            Photo.class) {
+            Person.class, Photo.class) {
         @Override
         public DataSourceFactory getDataSourceFactory(HelloWorldConfiguration configuration) {
             return configuration.getDataSourceFactory();
@@ -77,7 +69,6 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
             }
         });
         bootstrap.addBundle(hibernateBundle);
-        bootstrap.addBundle(hibernatePhotoBundle);
         bootstrap.addBundle(new ViewBundle<HelloWorldConfiguration>() {
             @Override
             public Map<String, Map<String, String>> getViewConfiguration(HelloWorldConfiguration configuration) {
