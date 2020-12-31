@@ -19,7 +19,7 @@ import java.util.Objects;
         {
                 @NamedQuery(
                         name = "com.example.helloworld.core.Photo.findAll",
-                        query = "SELECT p FROM photo p"
+                        query = "SELECT p FROM Photo p"
                 )
         })
 public class Photo {
