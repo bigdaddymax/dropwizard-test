@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.DefaultValue;
 import java.util.List;
 import java.util.OptionalInt;
+import io.dropwizard.hibernate.UnitOfWork;
 
 @Path("photos")
 @Produces(MediaType.APPLICATION_JSON)
@@ -23,6 +24,7 @@ public class PhotosResource {
 	}
 
 	@GET
+	@UnitOfWork
 	public List<Photo> listPhotos() {
 		return store.findAll();
 	}
