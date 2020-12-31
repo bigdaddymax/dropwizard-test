@@ -4,9 +4,9 @@ import com.example.helloworld.auth.ExampleAuthenticator;
 import com.example.helloworld.auth.ExampleAuthorizer;
 import com.example.helloworld.cli.RenderCommand;
 import com.example.helloworld.core.Person;
+import com.example.helloworld.core.Photo;
 import com.example.helloworld.core.Template;
 import com.example.helloworld.core.User;
-import com.example.helloworld.core.Photo;
 import com.example.helloworld.db.PersonDAO;
 import com.example.helloworld.db.PhotoDAO;
 import com.example.helloworld.filter.DateRequiredFeature;
@@ -41,13 +41,21 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
         new HelloWorldApplication().run(args);
     }
 
-    private final HibernateBundle<HelloWorldConfiguration> hibernateBundle =
-        new HibernateBundle<HelloWorldConfiguration>(Person.class) {
-            @Override
-            public DataSourceFactory getDataSourceFactory(HelloWorldConfiguration configuration) {
-                return configuration.getDataSourceFactory();
-            }
-        };
+    private final HibernateBundle<HelloWorldConfiguration> hibernateBundle = new HibernateBundle<HelloWorldConfiguration>(
+            Person.class) {
+        @Override
+        public DataSourceFactory getDataSourceFactory(HelloWorldConfiguration configuration) {
+            return configuration.getDataSourceFactory();
+        }
+    };
+
+    private final HibernateBundle<HelloWorldConfiguration> hibernatePhotoBundle = new HibernateBundle<HelloWorldConfiguration>(
+            Photo.class) {
+        @Override
+        public DataSourceFactory getDataSourceFactory(HelloWorldConfiguration configuration) {
+            return configuration.getDataSourceFactory();
+        }
+    };
 
     @Override
     public String getName() {
@@ -57,12 +65,8 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     @Override
     public void initialize(Bootstrap<HelloWorldConfiguration> bootstrap) {
         // Enable variable substitution with environment variables
-        bootstrap.setConfigurationSourceProvider(
-                new SubstitutingSourceProvider(
-                        bootstrap.getConfigurationSourceProvider(),
-                        new EnvironmentVariableSubstitutor(false)
-                )
-        );
+        bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(
+                bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor(false)));
 
         bootstrap.addCommand(new RenderCommand());
         bootstrap.addBundle(new AssetsBundle());
@@ -85,16 +89,15 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     public void run(HelloWorldConfiguration configuration, Environment environment) {
         final PersonDAO dao = new PersonDAO(hibernateBundle.getSessionFactory());
         final Template template = configuration.buildTemplate();
-        final PhotoDAO store = new PhotoDAO(hibernateBundle.getSessionFactory());
+        final PhotoDAO store = new PhotoDAO(hibernatePhotoBundle.getSessionFactory());
 
         environment.healthChecks().register("template", new TemplateHealthCheck(template));
         environment.admin().addTask(new EchoTask());
         environment.jersey().register(DateRequiredFeature.class);
-        environment.jersey().register(new AuthDynamicFeature(new BasicCredentialAuthFilter.Builder<User>()
-                .setAuthenticator(new ExampleAuthenticator())
-                .setAuthorizer(new ExampleAuthorizer())
-                .setRealm("SUPER SECRET STUFF")
-                .buildAuthFilter()));
+        environment.jersey()
+                .register(new AuthDynamicFeature(new BasicCredentialAuthFilter.Builder<User>()
+                        .setAuthenticator(new ExampleAuthenticator()).setAuthorizer(new ExampleAuthorizer())
+                        .setRealm("SUPER SECRET STUFF").buildAuthFilter()));
         environment.jersey().register(new AuthValueFactoryProvider.Binder<>(User.class));
         environment.jersey().register(RolesAllowedDynamicFeature.class);
         environment.jersey().register(new HelloWorldResource(template));
