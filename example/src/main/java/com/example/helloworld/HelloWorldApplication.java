@@ -81,7 +81,7 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
     public void run(HelloWorldConfiguration configuration, Environment environment) {
         final PersonDAO dao = new PersonDAO(hibernateBundle.getSessionFactory());
         final Template template = configuration.buildTemplate();
-        final PhotoDAO store = new PhotoDAO(hibernatePhotoBundle.getSessionFactory());
+        final PhotoDAO store = new PhotoDAO(hibernateBundle.getSessionFactory());
 
         environment.healthChecks().register("template", new TemplateHealthCheck(template));
         environment.admin().addTask(new EchoTask());
@@ -98,6 +98,6 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
         environment.jersey().register(new PeopleResource(dao));
         environment.jersey().register(new PersonResource(dao));
         environment.jersey().register(new FilteredResource());
-        environment.jersey().register(new PhotosResource(store));
+        environment.jersey().register(new PhotosResource(dao));
     }
 }
