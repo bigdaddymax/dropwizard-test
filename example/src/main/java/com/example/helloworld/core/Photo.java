@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
+import javax.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -28,6 +28,7 @@ public class Photo {
     private long id;
 
     @Column(name = "name", nullable = false)
+    @NotNull
     private String name;
 
     @Column(name = "hash", nullable = false)
