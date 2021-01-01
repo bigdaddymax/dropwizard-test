@@ -85,6 +85,14 @@ public class Photo {
         this.dateTaken = dateTaken;
     }
 
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
