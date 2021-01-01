@@ -42,9 +42,9 @@ public class PhotoDAOTest {
     @Test
     public void findAll() {
         daoTestRule.inTransaction(() -> {
-            photoDAO.create(new Photo("me.jpg", "/path/to/photo1", "123abc", LocalDateTime.parse("2020-01-01 10:10:10")));
-            photoDAO.create(new Photo("kid.jpg", "/path/to/photo2", "432bdf", LocalDateTime.parse("2019-10-10 20:20:20")));
-            photoDAO.create(new Photo("mom.jpg", "/path/to/photo3", "abc432", LocalDateTime.parse("2018-11-01 01:10:11")));
+            photoDAO.create(new Photo("me.jpg", "/path/to/photo1", "123abc", LocalDateTime.parse("2020-01-01T10:10:10")));
+            photoDAO.create(new Photo("kid.jpg", "/path/to/photo2", "432bdf", LocalDateTime.parse("2019-10-10T20:20:20")));
+            photoDAO.create(new Photo("mom.jpg", "/path/to/photo3", "abc432", LocalDateTime.parse("2018-11-01T01:10:11")));
         });
 
         final List<Photo> photos = photoDAO.findAll();
