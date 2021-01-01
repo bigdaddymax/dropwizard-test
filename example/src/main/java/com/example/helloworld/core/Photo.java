@@ -45,7 +45,7 @@ public class Photo {
     public Photo() {
     }
 
-    public Photo(String name, String hash, String path, LocalDateTime dateTaken) {
+    public Photo(String name, String path, String hash, LocalDateTime dateTaken) {
         this.name = name;
         this.hash = hash;
         this.path = path;
