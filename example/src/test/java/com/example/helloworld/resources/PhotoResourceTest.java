@@ -66,7 +66,7 @@ public class PhotoResourceTest {
 
     @Test
     public void createPhotoFailureNoName() {
-
+        photo.setName(null);
         final Response response = RESOURCES.target("/photos")
                 .request(MediaType.APPLICATION_JSON_TYPE)
                 .post(Entity.entity(photo, MediaType.APPLICATION_JSON_TYPE));
@@ -77,7 +77,7 @@ public class PhotoResourceTest {
 
     @Test
     public void createPersonFailureNoPath() {
-
+        photo.setPath(null);
         final Response response = RESOURCES.target("/photos")
                 .request(MediaType.APPLICATION_JSON_TYPE)
                 .post(Entity.entity(photo, MediaType.APPLICATION_JSON_TYPE));
