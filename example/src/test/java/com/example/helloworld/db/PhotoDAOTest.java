@@ -31,7 +31,7 @@ public class PhotoDAOTest {
 
     @Test
     public void createPhoto() {
-        final Photo me = daoTestRule.inTransaction(() -> photoDAO.create(new Photo("me.jpg", "/path/to/photo", "123abc", LocalDateTime.parse("2020-01-01 10:20:11"))));
+        final Photo me = daoTestRule.inTransaction(() -> photoDAO.create(new Photo("me.jpg", "/path/to/photo", "123abc", LocalDateTime.parse("2020-01-01T10:20:11"))));
         assertThat(me.getId()).isGreaterThan(0);
         assertThat(me.getName()).isEqualTo("me.jpg");
         assertThat(me.getPath()).isEqualTo("/path/to/photo");
