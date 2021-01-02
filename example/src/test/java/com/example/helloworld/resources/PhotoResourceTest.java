@@ -72,7 +72,7 @@ public class PhotoResourceTest {
                 .post(Entity.entity(photo, MediaType.APPLICATION_JSON_TYPE));
 
         assertThat(response.getStatusInfo()).isNotEqualTo(Response.Status.OK);
-        assertThat(response.readEntity(String.class)).contains("yearBorn must be greater than or equal to 0");
+        assertThat(response.readEntity(String.class)).contains("name must not be null");
     }
 
     @Test
@@ -83,7 +83,7 @@ public class PhotoResourceTest {
                 .post(Entity.entity(photo, MediaType.APPLICATION_JSON_TYPE));
 
         assertThat(response.getStatusInfo()).isNotEqualTo(Response.Status.OK);
-        assertThat(response.readEntity(String.class)).contains("yearBorn must be less than or equal to 9999");
+        assertThat(response.readEntity(String.class)).contains("path must not be null");
     }
 
     @Test
