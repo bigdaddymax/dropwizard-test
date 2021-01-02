@@ -32,12 +32,15 @@ public class Photo {
     private String name;
 
     @Column(name = "hash", nullable = false)
+    @NotNull
     private String hash;
 
     @Column(name = "path", nullable = false)
+    @NotNull
     private String path;
 
     @Column(name = "dateTaken", nullable = false)
+    @NotNull
     private LocalDateTime dateTaken;
 
     @Column(name = "dateSaved", nullable = false)
