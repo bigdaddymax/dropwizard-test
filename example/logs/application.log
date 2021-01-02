@@ -1,9 +1,11 @@
-INFO  [2020-12-27 05:36:36,761] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
-INFO  [2020-12-27 05:36:36,780] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
-INFO  [2020-12-27 05:36:36,785] io.dropwizard.assets.AssetsBundle: Registering AssetBundle with name: assets for path /assets/*
-INFO  [2020-12-27 05:36:36,845] io.dropwizard.hibernate.SessionFactoryFactory: Entity classes: [com.example.helloworld.core.Person]
-INFO  [2020-12-27 05:36:37,057] org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-INFO  [2020-12-27 05:36:37,268] io.dropwizard.server.ServerFactory: Starting hello-world
+INFO  [2021-01-02 07:31:52,737] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2021-01-02 07:31:52,739] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2021-01-02 07:31:52,741] io.dropwizard.assets.AssetsBundle: Registering AssetBundle with name: assets for path /assets/*
+INFO  [2021-01-02 07:31:52,828] org.hibernate.Version: HHH000412: Hibernate ORM core version 5.4.24.Final
+INFO  [2021-01-02 07:31:52,989] io.dropwizard.hibernate.SessionFactoryFactory: Entity classes: [com.example.helloworld.core.Person, com.example.helloworld.core.Photo]
+INFO  [2021-01-02 07:31:53,012] org.hibernate.annotations.common.Version: HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+INFO  [2021-01-02 07:31:53,320] org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+INFO  [2021-01-02 07:31:54,279] io.dropwizard.server.ServerFactory: Starting hello-world
                            web-scale hello world dP for the web
                                                  88
   .d8888b. dP.  .dP .d8888b. 88d8b.d8b. 88d888b. 88 .d8888b.
@@ -12,10 +14,10 @@ INFO  [2020-12-27 05:36:37,268] io.dropwizard.server.ServerFactory: Starting hel
   `88888P' dP'  `dP `88888P8 dP  dP  dP 88Y888P' dP `88888P'
                                         88
                                         dP
-INFO  [2020-12-27 05:36:37,607] org.eclipse.jetty.setuid.SetUIDListener: Opened application@dc53bde{HTTP/1.1, (http/1.1)}{0.0.0.0:34178}
-INFO  [2020-12-27 05:36:37,607] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@2b43e7ce{HTTP/1.1, (http/1.1)}{0.0.0.0:33068}
-INFO  [2020-12-27 05:36:37,617] org.eclipse.jetty.server.Server: jetty-9.4.35.v20201120; built: 2020-11-20T21:17:03.964Z; git: bdc54f03a5e0a7e280fab27f55c3c75ee8da89fb; jvm 11.0.9+11-LTS
-INFO  [2020-12-27 05:36:38,156] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+INFO  [2021-01-02 07:31:54,466] org.eclipse.jetty.setuid.SetUIDListener: Opened application@646cb2e{HTTP/1.1, (http/1.1)}{0.0.0.0:50883}
+INFO  [2021-01-02 07:31:54,470] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@2e7a9db7{HTTP/1.1, (http/1.1)}{0.0.0.0:50884}
+INFO  [2021-01-02 07:31:54,476] org.eclipse.jetty.server.Server: jetty-9.4.35.v20201120; built: 2020-11-20T21:17:03.964Z; git: bdc54f03a5e0a7e280fab27f55c3c75ee8da89fb; jvm 14.0.2+12-46
+INFO  [2021-01-02 07:31:55,136] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
 
     GET     /filtered/hello (com.example.helloworld.resources.FilteredResource)
     GET     /hello-world (com.example.helloworld.resources.HelloWorldResource)
@@ -26,6 +28,8 @@ INFO  [2020-12-27 05:36:38,156] io.dropwizard.jersey.DropwizardResourceConfig: T
     GET     /people/{personId} (com.example.helloworld.resources.PersonResource)
     GET     /people/{personId}/view_freemarker (com.example.helloworld.resources.PersonResource)
     GET     /people/{personId}/view_mustache (com.example.helloworld.resources.PersonResource)
+    GET     /photos (com.example.helloworld.resources.PhotosResource)
+    POST    /photos (com.example.helloworld.resources.PhotosResource)
     GET     /protected (com.example.helloworld.resources.ProtectedResource)
     GET     /protected/admin (com.example.helloworld.resources.ProtectedResource)
     GET     /views/iso88591.ftl (com.example.helloworld.resources.ViewResource)
@@ -33,106 +37,64 @@ INFO  [2020-12-27 05:36:38,156] io.dropwizard.jersey.DropwizardResourceConfig: T
     GET     /views/utf8.ftl (com.example.helloworld.resources.ViewResource)
     GET     /views/utf8.mustache (com.example.helloworld.resources.ViewResource)
 
-INFO  [2020-12-27 05:36:38,182] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@1d2b8249{/,null,AVAILABLE}
-INFO  [2020-12-27 05:36:38,192] io.dropwizard.setup.AdminEnvironment: tasks = 
+INFO  [2021-01-02 07:31:55,142] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@624494d4{/,null,AVAILABLE}
+INFO  [2021-01-02 07:31:55,145] io.dropwizard.setup.AdminEnvironment: tasks = 
 
     POST    /tasks/echo (com.example.helloworld.tasks.EchoTask)
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
 
-INFO  [2020-12-27 05:36:38,195] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@50b153f8{/,null,AVAILABLE}
-INFO  [2020-12-27 05:36:38,235] org.eclipse.jetty.server.AbstractConnector: Started application@dc53bde{HTTP/1.1, (http/1.1)}{0.0.0.0:34178}
-INFO  [2020-12-27 05:36:38,262] org.eclipse.jetty.server.AbstractConnector: Started admin@2b43e7ce{HTTP/1.1, (http/1.1)}{0.0.0.0:33068}
-INFO  [2020-12-27 05:36:38,262] org.eclipse.jetty.server.Server: Started @26161ms
-INFO  [2020-12-27 05:36:42,254] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
-INFO  [2020-12-27 05:36:42,287] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.DATABASECHANGELOGLOCK (ID INT NOT NULL, LOCKED BOOLEAN NOT NULL, LOCKGRANTED TIMESTAMP, LOCKEDBY VARCHAR(255), CONSTRAINT PK_DATABASECHANGELOGLOCK PRIMARY KEY (ID))
-INFO  [2020-12-27 05:36:42,291] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
-INFO  [2020-12-27 05:36:42,296] liquibase.executor.jvm.JdbcExecutor: DELETE FROM PUBLIC.DATABASECHANGELOGLOCK
-INFO  [2020-12-27 05:36:42,300] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOGLOCK (ID, LOCKED) VALUES (1, FALSE)
-INFO  [2020-12-27 05:36:42,303] liquibase.executor.jvm.JdbcExecutor: SELECT LOCKED FROM PUBLIC.DATABASECHANGELOGLOCK WHERE ID=1
-INFO  [2020-12-27 05:36:42,333] liquibase.lockservice.StandardLockService: Successfully acquired change log lock
-INFO  [2020-12-27 05:36:43,396] liquibase.changelog.StandardChangeLogHistoryService: Creating database history table with name: PUBLIC.DATABASECHANGELOG
-INFO  [2020-12-27 05:36:43,405] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.DATABASECHANGELOG (ID VARCHAR(255) NOT NULL, AUTHOR VARCHAR(255) NOT NULL, FILENAME VARCHAR(255) NOT NULL, DATEEXECUTED TIMESTAMP NOT NULL, ORDEREXECUTED INT NOT NULL, EXECTYPE VARCHAR(10) NOT NULL, MD5SUM VARCHAR(35), DESCRIPTION VARCHAR(255), COMMENTS VARCHAR(255), TAG VARCHAR(255), LIQUIBASE VARCHAR(20), CONTEXTS VARCHAR(255), LABELS VARCHAR(255), DEPLOYMENT_ID VARCHAR(10))
-INFO  [2020-12-27 05:36:43,414] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOG
-INFO  [2020-12-27 05:36:43,414] liquibase.changelog.StandardChangeLogHistoryService: Reading from PUBLIC.DATABASECHANGELOG
-INFO  [2020-12-27 05:36:43,422] liquibase.executor.jvm.JdbcExecutor: SELECT * FROM PUBLIC.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
-INFO  [2020-12-27 05:36:43,424] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
-INFO  [2020-12-27 05:36:43,544] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.people (id BIGINT AUTO_INCREMENT NOT NULL, fullName VARCHAR(255) NOT NULL, jobTitle VARCHAR(255), yearBorn INT, CONSTRAINT PK_PEOPLE PRIMARY KEY (id))
-INFO  [2020-12-27 05:36:43,548] liquibase.changelog.ChangeSet: Table people created
-INFO  [2020-12-27 05:36:43,549] liquibase.changelog.ChangeSet: ChangeSet migrations.xml::1::codahale ran successfully in 13ms
-INFO  [2020-12-27 05:36:43,550] liquibase.executor.jvm.JdbcExecutor: SELECT MAX(ORDEREXECUTED) FROM PUBLIC.DATABASECHANGELOG
-INFO  [2020-12-27 05:36:43,570] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('1', 'codahale', 'migrations.xml', NOW(), 1, '8:d2f9492a4069db7fed2745e2ee1ec0d2', 'createTable tableName=people', '', 'EXECUTED', NULL, NULL, '3.10.2', '9047403424')
-INFO  [2020-12-27 05:36:43,589] liquibase.lockservice.StandardLockService: Successfully released change log lock
-INFO  [2020-12-27 05:36:44,083] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
-    74033 nanoseconds spent acquiring 1 JDBC connections;
-    45327 nanoseconds spent releasing 1 JDBC connections;
-    38486667 nanoseconds spent preparing 1 JDBC statements;
-    4064612 nanoseconds spent executing 1 JDBC statements;
+INFO  [2021-01-02 07:31:55,146] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@4e343265{/,null,AVAILABLE}
+INFO  [2021-01-02 07:31:55,159] org.eclipse.jetty.server.AbstractConnector: Started application@646cb2e{HTTP/1.1, (http/1.1)}{0.0.0.0:50883}
+INFO  [2021-01-02 07:31:55,161] org.eclipse.jetty.server.AbstractConnector: Started admin@2e7a9db7{HTTP/1.1, (http/1.1)}{0.0.0.0:50884}
+INFO  [2021-01-02 07:31:55,161] org.eclipse.jetty.server.Server: Started @4301ms
+INFO  [2021-01-02 07:31:56,248] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:31:56,259] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.DATABASECHANGELOGLOCK (ID INT NOT NULL, LOCKED BOOLEAN NOT NULL, LOCKGRANTED TIMESTAMP, LOCKEDBY VARCHAR(255), CONSTRAINT PK_DATABASECHANGELOGLOCK PRIMARY KEY (ID))
+INFO  [2021-01-02 07:31:56,265] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:31:56,268] liquibase.executor.jvm.JdbcExecutor: DELETE FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:31:56,269] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOGLOCK (ID, LOCKED) VALUES (1, FALSE)
+INFO  [2021-01-02 07:31:56,272] liquibase.executor.jvm.JdbcExecutor: SELECT LOCKED FROM PUBLIC.DATABASECHANGELOGLOCK WHERE ID=1
+INFO  [2021-01-02 07:31:56,281] liquibase.lockservice.StandardLockService: Successfully acquired change log lock
+INFO  [2021-01-02 07:31:56,589] liquibase.changelog.StandardChangeLogHistoryService: Creating database history table with name: PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:31:56,592] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.DATABASECHANGELOG (ID VARCHAR(255) NOT NULL, AUTHOR VARCHAR(255) NOT NULL, FILENAME VARCHAR(255) NOT NULL, DATEEXECUTED TIMESTAMP NOT NULL, ORDEREXECUTED INT NOT NULL, EXECTYPE VARCHAR(10) NOT NULL, MD5SUM VARCHAR(35), DESCRIPTION VARCHAR(255), COMMENTS VARCHAR(255), TAG VARCHAR(255), LIQUIBASE VARCHAR(20), CONTEXTS VARCHAR(255), LABELS VARCHAR(255), DEPLOYMENT_ID VARCHAR(10))
+INFO  [2021-01-02 07:31:56,594] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:31:56,595] liquibase.changelog.StandardChangeLogHistoryService: Reading from PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:31:56,597] liquibase.executor.jvm.JdbcExecutor: SELECT * FROM PUBLIC.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+INFO  [2021-01-02 07:31:56,598] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:31:56,628] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.people (id BIGINT AUTO_INCREMENT NOT NULL, fullName VARCHAR(255) NOT NULL, jobTitle VARCHAR(255), yearBorn INT, CONSTRAINT PK_PEOPLE PRIMARY KEY (id))
+INFO  [2021-01-02 07:31:56,634] liquibase.changelog.ChangeSet: Table people created
+INFO  [2021-01-02 07:31:56,634] liquibase.changelog.ChangeSet: ChangeSet migrations.xml::1::codahale ran successfully in 6ms
+INFO  [2021-01-02 07:31:56,637] liquibase.executor.jvm.JdbcExecutor: SELECT MAX(ORDEREXECUTED) FROM PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:31:56,642] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('1', 'codahale', 'migrations.xml', NOW(), 1, '8:d2f9492a4069db7fed2745e2ee1ec0d2', 'createTable tableName=people', '', 'EXECUTED', NULL, NULL, '3.10.2', '9572716598')
+INFO  [2021-01-02 07:31:56,652] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.photo (id BIGINT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, path VARCHAR(255), hash VARCHAR(255), dateTaken TIMESTAMP, dateSaved TIMESTAMP, CONSTRAINT PK_PHOTO PRIMARY KEY (id))
+INFO  [2021-01-02 07:31:56,654] liquibase.changelog.ChangeSet: Table photo created
+INFO  [2021-01-02 07:31:56,654] liquibase.changelog.ChangeSet: ChangeSet migrations.xml::2::codahale ran successfully in 3ms
+INFO  [2021-01-02 07:31:56,657] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('2', 'codahale', 'migrations.xml', NOW(), 2, '8:4e73913d4b3cde8c1ab5b84202fc5122', 'createTable tableName=photo', '', 'EXECUTED', NULL, NULL, '3.10.2', '9572716598')
+INFO  [2021-01-02 07:31:56,659] liquibase.lockservice.StandardLockService: Successfully released change log lock
+INFO  [2021-01-02 07:31:57,047] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
+    52283 nanoseconds spent acquiring 1 JDBC connections;
+    32238 nanoseconds spent releasing 1 JDBC connections;
+    7800578 nanoseconds spent preparing 1 JDBC statements;
+    1068567 nanoseconds spent executing 1 JDBC statements;
     0 nanoseconds spent executing 0 JDBC batches;
     0 nanoseconds spent performing 0 L2C puts;
     0 nanoseconds spent performing 0 L2C hits;
     0 nanoseconds spent performing 0 L2C misses;
-    726151 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
+    4766209 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
     0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
 }
-INFO  [2020-12-27 05:36:44,216] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
-    70890 nanoseconds spent acquiring 1 JDBC connections;
-    51543 nanoseconds spent releasing 1 JDBC connections;
-    532547 nanoseconds spent preparing 1 JDBC statements;
-    324906 nanoseconds spent executing 1 JDBC statements;
-    0 nanoseconds spent executing 0 JDBC batches;
-    0 nanoseconds spent performing 0 L2C puts;
-    0 nanoseconds spent performing 0 L2C hits;
-    0 nanoseconds spent performing 0 L2C misses;
-    251711 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
-    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
-}
-INFO  [2020-12-27 05:36:44,244] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
-    74522 nanoseconds spent acquiring 1 JDBC connections;
-    45607 nanoseconds spent releasing 1 JDBC connections;
-    90445 nanoseconds spent preparing 1 JDBC statements;
-    1669859 nanoseconds spent executing 1 JDBC statements;
-    0 nanoseconds spent executing 0 JDBC batches;
-    0 nanoseconds spent performing 0 L2C puts;
-    0 nanoseconds spent performing 0 L2C hits;
-    0 nanoseconds spent performing 0 L2C misses;
-    215114 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
-    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
-}
-INFO  [2020-12-27 05:36:44,261] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
-    67258 nanoseconds spent acquiring 1 JDBC connections;
-    45537 nanoseconds spent releasing 1 JDBC connections;
-    88630 nanoseconds spent preparing 1 JDBC statements;
-    400546 nanoseconds spent executing 1 JDBC statements;
-    0 nanoseconds spent executing 0 JDBC batches;
-    0 nanoseconds spent performing 0 L2C puts;
-    0 nanoseconds spent performing 0 L2C hits;
-    0 nanoseconds spent performing 0 L2C misses;
-    217908 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
-    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
-}
-INFO  [2020-12-27 05:36:44,966] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
-    64395 nanoseconds spent acquiring 1 JDBC connections;
-    49518 nanoseconds spent releasing 1 JDBC connections;
-    76128 nanoseconds spent preparing 1 JDBC statements;
-    346418 nanoseconds spent executing 1 JDBC statements;
-    0 nanoseconds spent executing 0 JDBC batches;
-    0 nanoseconds spent performing 0 L2C puts;
-    0 nanoseconds spent performing 0 L2C hits;
-    0 nanoseconds spent performing 0 L2C misses;
-    249197 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
-    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
-}
-INFO  [2020-12-27 05:36:44,997] org.eclipse.jetty.server.AbstractConnector: Stopped application@dc53bde{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
-INFO  [2020-12-27 05:36:45,004] org.eclipse.jetty.server.AbstractConnector: Stopped admin@2b43e7ce{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
-INFO  [2020-12-27 05:36:45,008] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@50b153f8{/,null,STOPPED}
-INFO  [2020-12-27 05:36:45,011] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@1d2b8249{/,null,STOPPED}
-INFO  [2020-12-27 06:10:52,203] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
-INFO  [2020-12-27 06:10:52,213] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
-INFO  [2020-12-27 06:10:52,217] io.dropwizard.assets.AssetsBundle: Registering AssetBundle with name: assets for path /assets/*
-INFO  [2020-12-27 06:10:52,252] io.dropwizard.hibernate.SessionFactoryFactory: Entity classes: [com.example.helloworld.core.Person]
-INFO  [2020-12-27 06:10:52,375] org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-INFO  [2020-12-27 06:10:52,507] io.dropwizard.server.ServerFactory: Starting hello-world
+INFO  [2021-01-02 07:31:57,137] org.eclipse.jetty.server.AbstractConnector: Stopped application@646cb2e{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
+INFO  [2021-01-02 07:31:57,139] org.eclipse.jetty.server.AbstractConnector: Stopped admin@2e7a9db7{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
+INFO  [2021-01-02 07:31:57,140] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@4e343265{/,null,STOPPED}
+INFO  [2021-01-02 07:31:57,145] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@624494d4{/,null,STOPPED}
+INFO  [2021-01-02 07:32:44,410] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2021-01-02 07:32:44,414] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2021-01-02 07:32:44,416] io.dropwizard.assets.AssetsBundle: Registering AssetBundle with name: assets for path /assets/*
+INFO  [2021-01-02 07:32:44,667] org.hibernate.Version: HHH000412: Hibernate ORM core version 5.4.24.Final
+INFO  [2021-01-02 07:32:44,925] io.dropwizard.hibernate.SessionFactoryFactory: Entity classes: [com.example.helloworld.core.Person, com.example.helloworld.core.Photo]
+INFO  [2021-01-02 07:32:44,972] org.hibernate.annotations.common.Version: HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+INFO  [2021-01-02 07:32:45,435] org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+INFO  [2021-01-02 07:32:46,555] io.dropwizard.server.ServerFactory: Starting hello-world
                            web-scale hello world dP for the web
                                                  88
   .d8888b. dP.  .dP .d8888b. 88d8b.d8b. 88d888b. 88 .d8888b.
@@ -141,10 +103,10 @@ INFO  [2020-12-27 06:10:52,507] io.dropwizard.server.ServerFactory: Starting hel
   `88888P' dP'  `dP `88888P8 dP  dP  dP 88Y888P' dP `88888P'
                                         88
                                         dP
-INFO  [2020-12-27 06:10:52,989] org.eclipse.jetty.setuid.SetUIDListener: Opened application@40a258c5{HTTP/1.1, (http/1.1)}{0.0.0.0:44759}
-INFO  [2020-12-27 06:10:52,990] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@4e4654fa{HTTP/1.1, (http/1.1)}{0.0.0.0:41705}
-INFO  [2020-12-27 06:10:53,012] org.eclipse.jetty.server.Server: jetty-9.4.35.v20201120; built: 2020-11-20T21:17:03.964Z; git: bdc54f03a5e0a7e280fab27f55c3c75ee8da89fb; jvm 11.0.9+11-LTS
-INFO  [2020-12-27 06:10:53,605] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+INFO  [2021-01-02 07:32:46,674] org.eclipse.jetty.setuid.SetUIDListener: Opened application@646cb2e{HTTP/1.1, (http/1.1)}{0.0.0.0:50907}
+INFO  [2021-01-02 07:32:46,675] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@2e7a9db7{HTTP/1.1, (http/1.1)}{0.0.0.0:50908}
+INFO  [2021-01-02 07:32:46,678] org.eclipse.jetty.server.Server: jetty-9.4.35.v20201120; built: 2020-11-20T21:17:03.964Z; git: bdc54f03a5e0a7e280fab27f55c3c75ee8da89fb; jvm 14.0.2+12-46
+INFO  [2021-01-02 07:32:47,405] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
 
     GET     /filtered/hello (com.example.helloworld.resources.FilteredResource)
     GET     /hello-world (com.example.helloworld.resources.HelloWorldResource)
@@ -155,6 +117,8 @@ INFO  [2020-12-27 06:10:53,605] io.dropwizard.jersey.DropwizardResourceConfig: T
     GET     /people/{personId} (com.example.helloworld.resources.PersonResource)
     GET     /people/{personId}/view_freemarker (com.example.helloworld.resources.PersonResource)
     GET     /people/{personId}/view_mustache (com.example.helloworld.resources.PersonResource)
+    GET     /photos (com.example.helloworld.resources.PhotosResource)
+    POST    /photos (com.example.helloworld.resources.PhotosResource)
     GET     /protected (com.example.helloworld.resources.ProtectedResource)
     GET     /protected/admin (com.example.helloworld.resources.ProtectedResource)
     GET     /views/iso88591.ftl (com.example.helloworld.resources.ViewResource)
@@ -162,97 +126,142 @@ INFO  [2020-12-27 06:10:53,605] io.dropwizard.jersey.DropwizardResourceConfig: T
     GET     /views/utf8.ftl (com.example.helloworld.resources.ViewResource)
     GET     /views/utf8.mustache (com.example.helloworld.resources.ViewResource)
 
-INFO  [2020-12-27 06:10:53,613] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@7599df71{/,null,AVAILABLE}
-INFO  [2020-12-27 06:10:53,617] io.dropwizard.setup.AdminEnvironment: tasks = 
+INFO  [2021-01-02 07:32:47,413] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@38af386e{/,null,AVAILABLE}
+INFO  [2021-01-02 07:32:47,415] io.dropwizard.setup.AdminEnvironment: tasks = 
 
     POST    /tasks/echo (com.example.helloworld.tasks.EchoTask)
     POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
     POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
 
-INFO  [2020-12-27 06:10:53,618] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@59dd9b0f{/,null,AVAILABLE}
-INFO  [2020-12-27 06:10:53,637] org.eclipse.jetty.server.AbstractConnector: Started application@40a258c5{HTTP/1.1, (http/1.1)}{0.0.0.0:44759}
-INFO  [2020-12-27 06:10:53,653] org.eclipse.jetty.server.AbstractConnector: Started admin@4e4654fa{HTTP/1.1, (http/1.1)}{0.0.0.0:41705}
-INFO  [2020-12-27 06:10:53,662] org.eclipse.jetty.server.Server: Started @30003ms
-INFO  [2020-12-27 06:10:57,615] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
-INFO  [2020-12-27 06:10:57,657] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.DATABASECHANGELOGLOCK (ID INT NOT NULL, LOCKED BOOLEAN NOT NULL, LOCKGRANTED TIMESTAMP, LOCKEDBY VARCHAR(255), CONSTRAINT PK_DATABASECHANGELOGLOCK PRIMARY KEY (ID))
-INFO  [2020-12-27 06:10:57,662] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
-INFO  [2020-12-27 06:10:57,682] liquibase.executor.jvm.JdbcExecutor: DELETE FROM PUBLIC.DATABASECHANGELOGLOCK
-INFO  [2020-12-27 06:10:57,686] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOGLOCK (ID, LOCKED) VALUES (1, FALSE)
-INFO  [2020-12-27 06:10:57,709] liquibase.executor.jvm.JdbcExecutor: SELECT LOCKED FROM PUBLIC.DATABASECHANGELOGLOCK WHERE ID=1
-INFO  [2020-12-27 06:10:57,738] liquibase.lockservice.StandardLockService: Successfully acquired change log lock
-INFO  [2020-12-27 06:10:58,638] liquibase.changelog.StandardChangeLogHistoryService: Creating database history table with name: PUBLIC.DATABASECHANGELOG
-INFO  [2020-12-27 06:10:58,652] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.DATABASECHANGELOG (ID VARCHAR(255) NOT NULL, AUTHOR VARCHAR(255) NOT NULL, FILENAME VARCHAR(255) NOT NULL, DATEEXECUTED TIMESTAMP NOT NULL, ORDEREXECUTED INT NOT NULL, EXECTYPE VARCHAR(10) NOT NULL, MD5SUM VARCHAR(35), DESCRIPTION VARCHAR(255), COMMENTS VARCHAR(255), TAG VARCHAR(255), LIQUIBASE VARCHAR(20), CONTEXTS VARCHAR(255), LABELS VARCHAR(255), DEPLOYMENT_ID VARCHAR(10))
-INFO  [2020-12-27 06:10:58,661] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOG
-INFO  [2020-12-27 06:10:58,666] liquibase.changelog.StandardChangeLogHistoryService: Reading from PUBLIC.DATABASECHANGELOG
-INFO  [2020-12-27 06:10:58,668] liquibase.executor.jvm.JdbcExecutor: SELECT * FROM PUBLIC.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
-INFO  [2020-12-27 06:10:58,669] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
-INFO  [2020-12-27 06:10:58,814] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.people (id BIGINT AUTO_INCREMENT NOT NULL, fullName VARCHAR(255) NOT NULL, jobTitle VARCHAR(255), yearBorn INT, CONSTRAINT PK_PEOPLE PRIMARY KEY (id))
-INFO  [2020-12-27 06:10:58,816] liquibase.changelog.ChangeSet: Table people created
-INFO  [2020-12-27 06:10:58,817] liquibase.changelog.ChangeSet: ChangeSet migrations.xml::1::codahale ran successfully in 4ms
-INFO  [2020-12-27 06:10:58,818] liquibase.executor.jvm.JdbcExecutor: SELECT MAX(ORDEREXECUTED) FROM PUBLIC.DATABASECHANGELOG
-INFO  [2020-12-27 06:10:58,845] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('1', 'codahale', 'migrations.xml', NOW(), 1, '8:d2f9492a4069db7fed2745e2ee1ec0d2', 'createTable tableName=people', '', 'EXECUTED', NULL, NULL, '3.10.2', '9049458669')
-INFO  [2020-12-27 06:10:58,859] liquibase.lockservice.StandardLockService: Successfully released change log lock
-INFO  [2020-12-27 06:10:59,350] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
-    143107 nanoseconds spent acquiring 1 JDBC connections;
-    46934 nanoseconds spent releasing 1 JDBC connections;
-    33543439 nanoseconds spent preparing 1 JDBC statements;
-    26252881 nanoseconds spent executing 1 JDBC statements;
+INFO  [2021-01-02 07:32:47,415] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@73dd0f23{/,null,AVAILABLE}
+INFO  [2021-01-02 07:32:47,432] org.eclipse.jetty.server.AbstractConnector: Started application@646cb2e{HTTP/1.1, (http/1.1)}{0.0.0.0:50907}
+INFO  [2021-01-02 07:32:47,435] org.eclipse.jetty.server.AbstractConnector: Started admin@2e7a9db7{HTTP/1.1, (http/1.1)}{0.0.0.0:50908}
+INFO  [2021-01-02 07:32:47,435] org.eclipse.jetty.server.Server: Started @5405ms
+INFO  [2021-01-02 07:32:48,951] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:32:48,966] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.DATABASECHANGELOGLOCK (ID INT NOT NULL, LOCKED BOOLEAN NOT NULL, LOCKGRANTED TIMESTAMP, LOCKEDBY VARCHAR(255), CONSTRAINT PK_DATABASECHANGELOGLOCK PRIMARY KEY (ID))
+INFO  [2021-01-02 07:32:48,973] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:32:48,978] liquibase.executor.jvm.JdbcExecutor: DELETE FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:32:48,980] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOGLOCK (ID, LOCKED) VALUES (1, FALSE)
+INFO  [2021-01-02 07:32:48,983] liquibase.executor.jvm.JdbcExecutor: SELECT LOCKED FROM PUBLIC.DATABASECHANGELOGLOCK WHERE ID=1
+INFO  [2021-01-02 07:32:48,992] liquibase.lockservice.StandardLockService: Successfully acquired change log lock
+INFO  [2021-01-02 07:32:49,410] liquibase.changelog.StandardChangeLogHistoryService: Creating database history table with name: PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:32:49,426] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.DATABASECHANGELOG (ID VARCHAR(255) NOT NULL, AUTHOR VARCHAR(255) NOT NULL, FILENAME VARCHAR(255) NOT NULL, DATEEXECUTED TIMESTAMP NOT NULL, ORDEREXECUTED INT NOT NULL, EXECTYPE VARCHAR(10) NOT NULL, MD5SUM VARCHAR(35), DESCRIPTION VARCHAR(255), COMMENTS VARCHAR(255), TAG VARCHAR(255), LIQUIBASE VARCHAR(20), CONTEXTS VARCHAR(255), LABELS VARCHAR(255), DEPLOYMENT_ID VARCHAR(10))
+INFO  [2021-01-02 07:32:49,429] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:32:49,430] liquibase.changelog.StandardChangeLogHistoryService: Reading from PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:32:49,432] liquibase.executor.jvm.JdbcExecutor: SELECT * FROM PUBLIC.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+INFO  [2021-01-02 07:32:49,434] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:32:49,473] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.people (id BIGINT AUTO_INCREMENT NOT NULL, fullName VARCHAR(255) NOT NULL, jobTitle VARCHAR(255), yearBorn INT, CONSTRAINT PK_PEOPLE PRIMARY KEY (id))
+INFO  [2021-01-02 07:32:49,479] liquibase.changelog.ChangeSet: Table people created
+INFO  [2021-01-02 07:32:49,480] liquibase.changelog.ChangeSet: ChangeSet migrations.xml::1::codahale ran successfully in 9ms
+INFO  [2021-01-02 07:32:49,482] liquibase.executor.jvm.JdbcExecutor: SELECT MAX(ORDEREXECUTED) FROM PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:32:49,489] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('1', 'codahale', 'migrations.xml', NOW(), 1, '8:d2f9492a4069db7fed2745e2ee1ec0d2', 'createTable tableName=people', '', 'EXECUTED', NULL, NULL, '3.10.2', '9572769435')
+INFO  [2021-01-02 07:32:49,504] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.photo (id BIGINT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, path VARCHAR(255), hash VARCHAR(255), dateTaken TIMESTAMP, dateSaved TIMESTAMP, CONSTRAINT PK_PHOTO PRIMARY KEY (id))
+INFO  [2021-01-02 07:32:49,507] liquibase.changelog.ChangeSet: Table photo created
+INFO  [2021-01-02 07:32:49,507] liquibase.changelog.ChangeSet: ChangeSet migrations.xml::2::codahale ran successfully in 4ms
+INFO  [2021-01-02 07:32:49,509] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('2', 'codahale', 'migrations.xml', NOW(), 2, '8:4e73913d4b3cde8c1ab5b84202fc5122', 'createTable tableName=photo', '', 'EXECUTED', NULL, NULL, '3.10.2', '9572769435')
+INFO  [2021-01-02 07:32:49,512] liquibase.lockservice.StandardLockService: Successfully released change log lock
+INFO  [2021-01-02 07:32:49,958] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
+    48461 nanoseconds spent acquiring 1 JDBC connections;
+    31965 nanoseconds spent releasing 1 JDBC connections;
+    11654825 nanoseconds spent preparing 1 JDBC statements;
+    1760868 nanoseconds spent executing 1 JDBC statements;
     0 nanoseconds spent executing 0 JDBC batches;
     0 nanoseconds spent performing 0 L2C puts;
     0 nanoseconds spent performing 0 L2C hits;
     0 nanoseconds spent performing 0 L2C misses;
-    219235 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
+    4864636 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
     0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
 }
-INFO  [2020-12-27 06:10:59,578] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
-    872261 nanoseconds spent acquiring 1 JDBC connections;
-    53779 nanoseconds spent releasing 1 JDBC connections;
-    531360 nanoseconds spent preparing 1 JDBC statements;
-    8378911 nanoseconds spent executing 1 JDBC statements;
+INFO  [2021-01-02 07:32:50,038] org.eclipse.jetty.server.AbstractConnector: Stopped application@646cb2e{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
+INFO  [2021-01-02 07:32:50,039] org.eclipse.jetty.server.AbstractConnector: Stopped admin@2e7a9db7{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
+INFO  [2021-01-02 07:32:50,041] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@73dd0f23{/,null,STOPPED}
+INFO  [2021-01-02 07:32:50,048] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@38af386e{/,null,STOPPED}
+INFO  [2021-01-02 07:50:53,133] io.dropwizard.server.DefaultServerFactory: Registering jersey handler with root path prefix: /
+INFO  [2021-01-02 07:50:53,138] io.dropwizard.server.DefaultServerFactory: Registering admin handler with root path prefix: /
+INFO  [2021-01-02 07:50:53,139] io.dropwizard.assets.AssetsBundle: Registering AssetBundle with name: assets for path /assets/*
+INFO  [2021-01-02 07:50:53,229] org.hibernate.Version: HHH000412: Hibernate ORM core version 5.4.24.Final
+INFO  [2021-01-02 07:50:53,412] io.dropwizard.hibernate.SessionFactoryFactory: Entity classes: [com.example.helloworld.core.Person, com.example.helloworld.core.Photo]
+INFO  [2021-01-02 07:50:53,440] org.hibernate.annotations.common.Version: HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+INFO  [2021-01-02 07:50:53,787] org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+INFO  [2021-01-02 07:50:54,605] io.dropwizard.server.ServerFactory: Starting hello-world
+                           web-scale hello world dP for the web
+                                                 88
+  .d8888b. dP.  .dP .d8888b. 88d8b.d8b. 88d888b. 88 .d8888b.
+  88ooood8  `8bd8'  88'  `88 88'`88'`88 88'  `88 88 88ooood8
+  88.  ...  .d88b.  88.  .88 88  88  88 88.  .88 88 88.  ...
+  `88888P' dP'  `dP `88888P8 dP  dP  dP 88Y888P' dP `88888P'
+                                        88
+                                        dP
+INFO  [2021-01-02 07:50:54,696] org.eclipse.jetty.setuid.SetUIDListener: Opened application@646cb2e{HTTP/1.1, (http/1.1)}{0.0.0.0:51117}
+INFO  [2021-01-02 07:50:54,697] org.eclipse.jetty.setuid.SetUIDListener: Opened admin@2e7a9db7{HTTP/1.1, (http/1.1)}{0.0.0.0:51118}
+INFO  [2021-01-02 07:50:54,699] org.eclipse.jetty.server.Server: jetty-9.4.35.v20201120; built: 2020-11-20T21:17:03.964Z; git: bdc54f03a5e0a7e280fab27f55c3c75ee8da89fb; jvm 14.0.2+12-46
+INFO  [2021-01-02 07:50:55,252] io.dropwizard.jersey.DropwizardResourceConfig: The following paths were found for the configured resources:
+
+    GET     /filtered/hello (com.example.helloworld.resources.FilteredResource)
+    GET     /hello-world (com.example.helloworld.resources.HelloWorldResource)
+    POST    /hello-world (com.example.helloworld.resources.HelloWorldResource)
+    GET     /hello-world/date (com.example.helloworld.resources.HelloWorldResource)
+    GET     /people (com.example.helloworld.resources.PeopleResource)
+    POST    /people (com.example.helloworld.resources.PeopleResource)
+    GET     /people/{personId} (com.example.helloworld.resources.PersonResource)
+    GET     /people/{personId}/view_freemarker (com.example.helloworld.resources.PersonResource)
+    GET     /people/{personId}/view_mustache (com.example.helloworld.resources.PersonResource)
+    GET     /photos (com.example.helloworld.resources.PhotosResource)
+    POST    /photos (com.example.helloworld.resources.PhotosResource)
+    GET     /protected (com.example.helloworld.resources.ProtectedResource)
+    GET     /protected/admin (com.example.helloworld.resources.ProtectedResource)
+    GET     /views/iso88591.ftl (com.example.helloworld.resources.ViewResource)
+    GET     /views/iso88591.mustache (com.example.helloworld.resources.ViewResource)
+    GET     /views/utf8.ftl (com.example.helloworld.resources.ViewResource)
+    GET     /views/utf8.mustache (com.example.helloworld.resources.ViewResource)
+
+INFO  [2021-01-02 07:50:55,261] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@38af386e{/,null,AVAILABLE}
+INFO  [2021-01-02 07:50:55,264] io.dropwizard.setup.AdminEnvironment: tasks = 
+
+    POST    /tasks/echo (com.example.helloworld.tasks.EchoTask)
+    POST    /tasks/log-level (io.dropwizard.servlets.tasks.LogConfigurationTask)
+    POST    /tasks/gc (io.dropwizard.servlets.tasks.GarbageCollectionTask)
+
+INFO  [2021-01-02 07:50:55,265] org.eclipse.jetty.server.handler.ContextHandler: Started i.d.j.MutableServletContextHandler@73dd0f23{/,null,AVAILABLE}
+INFO  [2021-01-02 07:50:55,289] org.eclipse.jetty.server.AbstractConnector: Started application@646cb2e{HTTP/1.1, (http/1.1)}{0.0.0.0:51117}
+INFO  [2021-01-02 07:50:55,291] org.eclipse.jetty.server.AbstractConnector: Started admin@2e7a9db7{HTTP/1.1, (http/1.1)}{0.0.0.0:51118}
+INFO  [2021-01-02 07:50:55,291] org.eclipse.jetty.server.Server: Started @4390ms
+INFO  [2021-01-02 07:50:56,356] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:50:56,368] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.DATABASECHANGELOGLOCK (ID INT NOT NULL, LOCKED BOOLEAN NOT NULL, LOCKGRANTED TIMESTAMP, LOCKEDBY VARCHAR(255), CONSTRAINT PK_DATABASECHANGELOGLOCK PRIMARY KEY (ID))
+INFO  [2021-01-02 07:50:56,373] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:50:56,377] liquibase.executor.jvm.JdbcExecutor: DELETE FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:50:56,378] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOGLOCK (ID, LOCKED) VALUES (1, FALSE)
+INFO  [2021-01-02 07:50:56,381] liquibase.executor.jvm.JdbcExecutor: SELECT LOCKED FROM PUBLIC.DATABASECHANGELOGLOCK WHERE ID=1
+INFO  [2021-01-02 07:50:56,387] liquibase.lockservice.StandardLockService: Successfully acquired change log lock
+INFO  [2021-01-02 07:50:56,690] liquibase.changelog.StandardChangeLogHistoryService: Creating database history table with name: PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:50:56,694] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.DATABASECHANGELOG (ID VARCHAR(255) NOT NULL, AUTHOR VARCHAR(255) NOT NULL, FILENAME VARCHAR(255) NOT NULL, DATEEXECUTED TIMESTAMP NOT NULL, ORDEREXECUTED INT NOT NULL, EXECTYPE VARCHAR(10) NOT NULL, MD5SUM VARCHAR(35), DESCRIPTION VARCHAR(255), COMMENTS VARCHAR(255), TAG VARCHAR(255), LIQUIBASE VARCHAR(20), CONTEXTS VARCHAR(255), LABELS VARCHAR(255), DEPLOYMENT_ID VARCHAR(10))
+INFO  [2021-01-02 07:50:56,696] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:50:56,698] liquibase.changelog.StandardChangeLogHistoryService: Reading from PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:50:56,699] liquibase.executor.jvm.JdbcExecutor: SELECT * FROM PUBLIC.DATABASECHANGELOG ORDER BY DATEEXECUTED ASC, ORDEREXECUTED ASC
+INFO  [2021-01-02 07:50:56,701] liquibase.executor.jvm.JdbcExecutor: SELECT COUNT(*) FROM PUBLIC.DATABASECHANGELOGLOCK
+INFO  [2021-01-02 07:50:56,744] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.people (id BIGINT AUTO_INCREMENT NOT NULL, fullName VARCHAR(255) NOT NULL, jobTitle VARCHAR(255), yearBorn INT, CONSTRAINT PK_PEOPLE PRIMARY KEY (id))
+INFO  [2021-01-02 07:50:56,751] liquibase.changelog.ChangeSet: Table people created
+INFO  [2021-01-02 07:50:56,751] liquibase.changelog.ChangeSet: ChangeSet migrations.xml::1::codahale ran successfully in 8ms
+INFO  [2021-01-02 07:50:56,752] liquibase.executor.jvm.JdbcExecutor: SELECT MAX(ORDEREXECUTED) FROM PUBLIC.DATABASECHANGELOG
+INFO  [2021-01-02 07:50:56,761] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('1', 'codahale', 'migrations.xml', NOW(), 1, '8:d2f9492a4069db7fed2745e2ee1ec0d2', 'createTable tableName=people', '', 'EXECUTED', NULL, NULL, '3.10.2', '9573856701')
+INFO  [2021-01-02 07:50:56,777] liquibase.executor.jvm.JdbcExecutor: CREATE TABLE PUBLIC.photo (id BIGINT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, path VARCHAR(255), hash VARCHAR(255), dateTaken TIMESTAMP, dateSaved TIMESTAMP, CONSTRAINT PK_PHOTO PRIMARY KEY (id))
+INFO  [2021-01-02 07:50:56,779] liquibase.changelog.ChangeSet: Table photo created
+INFO  [2021-01-02 07:50:56,780] liquibase.changelog.ChangeSet: ChangeSet migrations.xml::2::codahale ran successfully in 4ms
+INFO  [2021-01-02 07:50:56,785] liquibase.executor.jvm.JdbcExecutor: INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('2', 'codahale', 'migrations.xml', NOW(), 2, '8:4e73913d4b3cde8c1ab5b84202fc5122', 'createTable tableName=photo', '', 'EXECUTED', NULL, NULL, '3.10.2', '9573856701')
+INFO  [2021-01-02 07:50:56,788] liquibase.lockservice.StandardLockService: Successfully released change log lock
+INFO  [2021-01-02 07:50:57,156] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
+    65270 nanoseconds spent acquiring 1 JDBC connections;
+    58112 nanoseconds spent releasing 1 JDBC connections;
+    7938950 nanoseconds spent preparing 1 JDBC statements;
+    1073548 nanoseconds spent executing 1 JDBC statements;
     0 nanoseconds spent executing 0 JDBC batches;
     0 nanoseconds spent performing 0 L2C puts;
     0 nanoseconds spent performing 0 L2C hits;
     0 nanoseconds spent performing 0 L2C misses;
-    289776 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
+    4062675 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
     0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
 }
-INFO  [2020-12-27 06:10:59,635] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
-    91982 nanoseconds spent acquiring 1 JDBC connections;
-    48052 nanoseconds spent releasing 1 JDBC connections;
-    106230 nanoseconds spent preparing 1 JDBC statements;
-    1778534 nanoseconds spent executing 1 JDBC statements;
-    0 nanoseconds spent executing 0 JDBC batches;
-    0 nanoseconds spent performing 0 L2C puts;
-    0 nanoseconds spent performing 0 L2C hits;
-    0 nanoseconds spent performing 0 L2C misses;
-    221190 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
-    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
-}
-INFO  [2020-12-27 06:10:59,666] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
-    71659 nanoseconds spent acquiring 1 JDBC connections;
-    48331 nanoseconds spent releasing 1 JDBC connections;
-    15282403 nanoseconds spent preparing 1 JDBC statements;
-    480934 nanoseconds spent executing 1 JDBC statements;
-    0 nanoseconds spent executing 0 JDBC batches;
-    0 nanoseconds spent performing 0 L2C puts;
-    0 nanoseconds spent performing 0 L2C hits;
-    0 nanoseconds spent performing 0 L2C misses;
-    273363 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
-    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
-}
-INFO  [2020-12-27 06:11:00,198] org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: Session Metrics {
-    89328 nanoseconds spent acquiring 1 JDBC connections;
-    990853 nanoseconds spent releasing 1 JDBC connections;
-    69004 nanoseconds spent preparing 1 JDBC statements;
-    364647 nanoseconds spent executing 1 JDBC statements;
-    0 nanoseconds spent executing 0 JDBC batches;
-    0 nanoseconds spent performing 0 L2C puts;
-    0 nanoseconds spent performing 0 L2C hits;
-    0 nanoseconds spent performing 0 L2C misses;
-    257159 nanoseconds spent executing 1 flushes (flushing a total of 1 entities and 0 collections);
-    0 nanoseconds spent executing 0 partial-flushes (flushing a total of 0 entities and 0 collections)
-}
-INFO  [2020-12-27 06:11:00,237] org.eclipse.jetty.server.AbstractConnector: Stopped application@40a258c5{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
-INFO  [2020-12-27 06:11:00,238] org.eclipse.jetty.server.AbstractConnector: Stopped admin@4e4654fa{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
-INFO  [2020-12-27 06:11:00,241] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@59dd9b0f{/,null,STOPPED}
-INFO  [2020-12-27 06:11:00,245] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@7599df71{/,null,STOPPED}
+INFO  [2021-01-02 07:50:57,241] org.eclipse.jetty.server.AbstractConnector: Stopped application@646cb2e{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
+INFO  [2021-01-02 07:50:57,242] org.eclipse.jetty.server.AbstractConnector: Stopped admin@2e7a9db7{HTTP/1.1, (http/1.1)}{0.0.0.0:0}
+INFO  [2021-01-02 07:50:57,243] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@73dd0f23{/,null,STOPPED}
+INFO  [2021-01-02 07:50:57,249] org.eclipse.jetty.server.handler.ContextHandler: Stopped i.d.j.MutableServletContextHandler@38af386e{/,null,STOPPED}

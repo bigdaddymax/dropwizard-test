@@ -2,6 +2,7 @@ package com.example.helloworld;
 
 import com.example.helloworld.api.Saying;
 import com.example.helloworld.core.Person;
+import com.example.helloworld.core.Photo;
 import io.dropwizard.testing.ConfigOverride;
 import io.dropwizard.testing.ResourceHelpers;
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -61,9 +63,18 @@ public class IntegrationTest {
     public void testPostPerson() throws Exception {
         final Person person = new Person("Dr. IntegrationTest", "Chief Wizard", 1525);
         final Person newPerson = postPerson(person);
-        assertThat(newPerson.getId()).isNotNull();
+        assertThat(newPerson.getId()).isPositive();
         assertThat(newPerson.getFullName()).isEqualTo(person.getFullName());
         assertThat(newPerson.getJobTitle()).isEqualTo(person.getJobTitle());
+    }
+
+    @Test
+    public void testPostPhoto() throws Exception {
+        final Photo photo = new Photo("me.jpg", "/path/to/photo", "12345abcd", LocalDateTime.parse("2020-10-10T10:10:10"));
+        final Photo newPhoto = postPhoto(photo);
+        assertThat(newPhoto.getId()).isPositive();
+        assertThat(newPhoto.getName()).isEqualTo(photo.getName());
+        assertThat(newPhoto.getPath()).isEqualTo(photo.getPath());
     }
 
     @Test
@@ -82,6 +93,13 @@ public class IntegrationTest {
         final String url = "http://localhost:" + RULE.getLocalPort() + "/people/" + newPerson.getId() + "/" + viewName;
         Response response = RULE.client().target(url).request().get();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.OK_200);
+    }
+
+    private Photo postPhoto(Photo photo) {
+        return RULE.client().target("http://localhost:" + RULE.getLocalPort() + "/photos")
+                .request()
+                .post(Entity.entity(photo, MediaType.APPLICATION_JSON_TYPE))
+                .readEntity(Photo.class);
     }
 
     private Person postPerson(Person person) {
