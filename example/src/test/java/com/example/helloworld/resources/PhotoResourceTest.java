@@ -53,7 +53,7 @@ public class PhotoResourceTest {
     }
 
     @Test
-    public void createPerson() {
+    public void createPhoto() {
         when(PHOTO_DAO.create(any(Photo.class))).thenReturn(photo);
         final Response response = RESOURCES.target("/photos")
                 .request(MediaType.APPLICATION_JSON_TYPE)

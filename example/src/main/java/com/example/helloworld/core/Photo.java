@@ -7,13 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Entity
 @Table(name = "photo")
@@ -48,7 +51,17 @@ public class Photo {
     @Column(name = "dateSaved", nullable = false)
     private LocalDateTime dateSaved;
 
+    private static final Logger logger = LoggerFactory.getLogger(Photo.class);
+
     public Photo() {
+    }
+
+    @PrePersist
+    void preInsert() {
+        logger.info("In prePersist");
+        if (this.dateSaved == null) {
+            this.dateSaved = LocalDateTime.now();
+        }
     }
 
     public Photo(String name, String path, String hash, LocalDateTime dateTaken) {
@@ -56,7 +69,14 @@ public class Photo {
         this.hash = hash;
         this.path = path;
         this.dateTaken = dateTaken;
-        this.dateSaved = LocalDateTime.now();
+    }
+
+    public Photo(String name, String path, String hash, LocalDateTime dateTaken, LocalDateTime dateSaved) {
+        this.name = name;
+        this.hash = hash;
+        this.path = path;
+        this.dateTaken = dateTaken;
+        this.dateSaved = dateSaved;
     }
 
     public long getId() {
@@ -99,6 +119,10 @@ public class Photo {
         return path;
     }
 
+    public LocalDateTime getDateSaved() {
+        return dateSaved;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) {
