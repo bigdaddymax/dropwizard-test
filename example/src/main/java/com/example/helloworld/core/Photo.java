@@ -10,6 +10,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -119,4 +121,9 @@ public class Photo {
     public int hashCode() {
         return Objects.hash(hash);
     }
+
+    public String toString() {
+        return (new ReflectionToStringBuilder(this)).toString();
+    }
+   
 }

@@ -1,6 +1,7 @@
 package com.example.helloworld.resources;
 
 import com.example.helloworld.db.PhotoDAO;
+
 import com.example.helloworld.core.Photo;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,6 +11,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import io.dropwizard.hibernate.UnitOfWork;
+
+
 import javax.validation.Valid;
 
 @Path("photos")
