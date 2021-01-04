@@ -20,13 +20,9 @@ import org.slf4j.LoggerFactory;
 
 @Entity
 @Table(name = "photo")
-@NamedQueries(
-        {
-                @NamedQuery(
-                        name = "com.example.helloworld.core.Photo.findAll",
-                        query = "SELECT p FROM Photo p"
-                )
-        })
+@NamedQuery(name = "com.example.helloworld.core.Photo.findAll", query = "SELECT p FROM Photo p")
+@NamedQuery(name = "com.example.helloworld.core.Photo.findByHash", query = "SELECT p FROM Photo p WHERE hash = :hash")
+
 public class Photo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -122,7 +118,7 @@ public class Photo {
     public LocalDateTime getDateSaved() {
         return dateSaved;
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -135,10 +131,8 @@ public class Photo {
 
         Photo photo = (Photo) o;
 
-        return id == photo.id ||
-                hash == photo.hash ||
-                Objects.equals(dateTaken, photo.dateTaken) &&
-                Objects.equals(name, photo.name);
+        return id == photo.id || hash == photo.hash
+                || Objects.equals(dateTaken, photo.dateTaken) && Objects.equals(name, photo.name);
     }
 
     @Override
@@ -149,5 +143,5 @@ public class Photo {
     public String toString() {
         return (new ReflectionToStringBuilder(this)).toString();
     }
-   
+
 }
