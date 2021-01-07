@@ -59,7 +59,7 @@ public class PhotoDAOTest {
             photoDAO.create(new Photo("mom.jpg", "/path/to/photo3", "abc432", LocalDateTime.parse("2018-11-01T01:10:11")));
         });
 
-        final Photo photo = photoDAO.findByHash("123abc");
-        assertThat(photo.getName()).isEqualTo("me.jpg");        
+        final Optional<Photo> photo = photoDAO.findByHash("123abc");
+        assertThat(photo.get().getName()).isEqualTo("me.jpg");        
     }
 }

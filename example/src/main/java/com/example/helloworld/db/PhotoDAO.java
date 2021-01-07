@@ -20,9 +20,9 @@ public class PhotoDAO extends AbstractDAO<Photo> {
         return Optional.ofNullable(get(id));
     }
 
-    public Photo findByHash(String hash) {
-        return  (Photo) namedQuery("com.example.helloworld.core.Photo.findByHash").setParameter("hash", hash).uniqueResult();
-    }
+    public Optional<Photo> findByHash(String hash) {
+        return  Optional.ofNullable((Photo) namedQuery("com.example.helloworld.core.Photo.findByHash").setParameter("hash", hash).setMaxResults(1).uniqueResult());
+     }
 
     public Photo create(Photo photo) {
         return persist(photo);

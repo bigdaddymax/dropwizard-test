@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -97,5 +98,15 @@ public class PhotoResourceTest {
 
         verify(PHOTO_DAO).findAll();
         assertThat(response).containsAll(photos);
+    }
+
+    @Test
+    public void findByHash() {
+        when(PHOTO_DAO.findByHash("abc123")).thenReturn(Optional.of(photo));
+        final Photo response = RESOURCES.target("/photos/abc123")
+            .request().get(new GenericType<Photo>() {
+            });
+        verify(PHOTO_DAO).findByHash("abc123");
+        assertThat(response).isEqualTo(photo);
     }
 }
